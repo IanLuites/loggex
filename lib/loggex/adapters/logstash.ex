@@ -1,4 +1,7 @@
 defmodule Loggex.Adapters.Logstash do
+  @moduledoc ~S"""
+  Log events to Logstash.
+  """
   @behaviour Loggex.Adapter
 
   @impl Loggex.Adapter

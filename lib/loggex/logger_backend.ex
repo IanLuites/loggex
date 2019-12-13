@@ -1,5 +1,6 @@
 defmodule Loggex.LoggerBackend do
   @moduledoc ~S"""
+  Hook to pickup events from logger backend.
   """
   @meta ~w(pid file line module function application)a
   @behaviour :gen_event
@@ -19,10 +20,12 @@ defmodule Loggex.LoggerBackend do
   end
 
   @impl :gen_event
-  def handle_call(_msg, state), do: {:ok, state}
+  def handle_call(_msg, state), do: {:ok, :ok, state}
   @impl :gen_event
   def handle_info(_msg, state), do: {:ok, state}
 
+  @doc false
+  @spec report_error_event(tuple) :: :ok
   def report_error_event({level, group_leader, {Logger, message, timestamp, metadata}}) do
     meta =
       metadata

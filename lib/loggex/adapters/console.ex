@@ -1,4 +1,7 @@
 defmodule Loggex.Adapters.Console do
+  @moduledoc ~S"""
+  Log events to console. (TTY)
+  """
   @behaviour Loggex.Adapter
 
   @color IO.ANSI.yellow()
