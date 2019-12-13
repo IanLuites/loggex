@@ -41,7 +41,7 @@ defmodule Loggex.MixProject do
       name: :loggex,
       maintainers: ["Ian Luites"],
       licenses: ["MIT"],
-      files: ~w(.formatter.exs mix.exs README.md LICENSE lib),
+      files: ~W(.formatter.exs mix.exs README.md LICENSE lib),
       links: %{}
     ]
   end
@@ -56,12 +56,13 @@ defmodule Loggex.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:jason, "~> 1.0"},
-      {:httpx, "~> 0.0.10"},
+      {:jason, "~> 1.1"},
+      {:httpx, "~> 0.0.16"},
       {:msgpack, "~> 0.7.0"},
 
       # Dev
-      {:analyze, ">= 0.0.10", only: [:dev, :test], runtime: false, override: true}
+      {:analyze, ">= 0.1.10", only: [:dev, :test], runtime: false},
+      {:dialyxir, "~> 1.0.0-rc.7", only: [:dev], runtime: false}
     ]
   end
 end
