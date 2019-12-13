@@ -10,7 +10,7 @@ by adding `loggex` to your list of dependencies in `mix.exs`:
 ```elixir
 def deps do
   [
-    {:loggex, "~> 0.0.1"}
+    {:loggex, "~> 0.1"}
   ]
 end
 ```
