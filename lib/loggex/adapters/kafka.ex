@@ -1,4 +1,7 @@
 defmodule Loggex.Adapters.Kafka do
+  @moduledoc ~S"""
+  Log events to Kafka.
+  """
   @behaviour Loggex.Adapter
 
   @impl Loggex.Adapter

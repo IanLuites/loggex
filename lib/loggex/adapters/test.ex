@@ -13,12 +13,20 @@ defmodule Loggex.Adapters.Test do
   @impl Loggex.Adapter
   def log(tag, event, _opts) do
     ensure_table_created()
-
     :ets.insert(@table_name, {tag, event.()})
+
+    :ok
   end
 
   @doc ~S"""
   Get all tags with logged events.
+
+  ## Examples
+
+  ```elixir
+  iex> events()
+  [...]
+  ```
   """
   @spec events :: map
   def events do
@@ -29,6 +37,13 @@ defmodule Loggex.Adapters.Test do
 
   @doc ~S"""
   Get all logged events for a given tag.
+
+  ## Examples
+
+  ```elixir
+  iex> events(:login)
+  [...]
+  ```
   """
   @spec events(Loggex.tag()) :: [map]
   def events(tag) do

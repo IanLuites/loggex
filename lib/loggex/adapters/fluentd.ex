@@ -1,4 +1,7 @@
 defmodule Loggex.Adapters.Fluentd do
+  @moduledoc ~S"""
+  Log events to FluentD.
+  """
   @behaviour Loggex.Adapter
 
   @impl Loggex.Adapter
@@ -13,9 +16,8 @@ defmodule Loggex.Adapters.Fluentd do
   defp http_input(uri, tag, data) do
     url = uri |> URI.merge(tag_to_string(tag)) |> to_string()
 
-    with {:ok, %{status: 200}} <- HTTPX.post(url, {:json, data}) do
-      :ok
-    else
+    case HTTPX.post(url, {:json, data}) do
+      {:ok, %{status: 200}} -> :ok
       error = {:error, _} -> error
       _ -> {:error, :fluentd_error}
     end
