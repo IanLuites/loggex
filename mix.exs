@@ -1,7 +1,7 @@
 defmodule Loggex.MixProject do
   use Mix.Project
 
-  @version "0.1.0"
+  @version "0.1.1"
 
   def project do
     [
@@ -56,13 +56,12 @@ defmodule Loggex.MixProject do
   # Run "mix help deps" to learn about dependencies.
   defp deps do
     [
-      {:jason, "~> 1.1"},
-      {:httpx, "~> 0.0.16"},
-      {:msgpack, "~> 0.7.0"},
+      {:jason, ">= 1.2.0"},
+      {:httpx, ">= 0.0.16"},
+      {:msgpack, ">= 0.7.0"},
 
       # Dev
-      {:analyze, ">= 0.1.10", only: [:dev, :test], runtime: false},
-      {:dialyxir, "~> 1.0.0-rc.7", only: [:dev], runtime: false}
+      {:heimdallr, ">= 0.0.2", only: [:dev, :test], runtime: false}
     ]
   end
 end
